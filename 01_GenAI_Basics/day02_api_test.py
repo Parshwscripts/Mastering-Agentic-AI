@@ -1,9 +1,6 @@
 import os
 from groq import Groq
 from dotenv import load_dotenv
-# 1. Initialize the client (Replace with your actual API key)
-# Pro-tip: Never hardcode keys in production! Use colab secrets or env vars.
-#os.environ["GROQ_API_KEY"] = "GROQ_API_KEY"
 load_dotenv()
 client = Groq()
 
@@ -25,7 +22,7 @@ def generate_social_hook(movie_name, creative_level):
                 "content": f"Write a hook for the movie: {movie_name}"
             }
         ],
-        # Handling the hyperparameters we learned yesterday:
+        # Handling the hyperparameters 
         temperature=creative_level, 
         max_tokens=100,
         top_p=1.0
