@@ -1,7 +1,7 @@
 import chromadb
 from chromadb.utils import embedding_functions
 
-print("🚀 Initializing local persistent storage engine...")
+print("Initializing local persistent storage engine...")
 # 1. Instantiate a persistent on-disk database client (creates a local folder)
 chroma_client = chromadb.PersistentClient(path="./chroma_db_storage")
 
@@ -10,7 +10,7 @@ sentence_transformer_ef = embedding_functions.SentenceTransformerEmbeddingFuncti
     model_name="all-MiniLM-L6-v2"
 )
 
-print("📦 Creating or fetching 'knowledge_base' collection...")
+print("Creating or fetching 'knowledge_base' collection...")
 # Collections in Vector DBs are equivalent to 'Tables' in Relational DBs
 collection = chroma_client.get_or_create_collection(
     name="knowledge_base",
@@ -42,7 +42,7 @@ collection.upsert(
     documents=documents_pool,
     metadatas=document_metadata
 )
-print("✅ Vector indexing pipeline complete.")
+print("Vector indexing pipeline complete.")
 
 # 4. Execute a production semantic search query
 user_query = "What steps should I take to improve my crop yield?"
@@ -54,7 +54,7 @@ search_results = collection.query(
     n_results=2
 )
 
-print("\n--- 🔍 Top Semantic Query Matches ---")
+print("\n--- Top Semantic Query Matches ---")
 for i in range(len(search_results['ids'][0])):
     print(f"\nRank #{i+1}:")
     print(f"ID: {search_results['ids'][0][i]}")
